@@ -24,7 +24,7 @@ class Home extends Component {
 	render() {
 		return (
 			<div>
-				这是Home页
+				这是Home页啦
 				<div>你在Home页停留了{data.inHomeTime}秒</div>
 				<TodayHistory dataArr={data.dataArr}/>
 			</div>
