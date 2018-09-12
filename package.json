@@ -29,6 +29,7 @@
     "file-loader": "1.1.5",
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
+    "http-proxy-middleware": "^0.19.0",
     "https": "^1.0.0",
     "jest": "20.0.4",
     "mini-css-extract-plugin": "^0.4.1",
@@ -108,7 +109,7 @@
   },
   "proxy": {
     "/jisuapi": {
-      "target": "http://api.jisuapi.com",
+      "target": "https://api.jisuapi.com",
       "changeOrigin": true,
       "pathRewrite": {
         "^/jisuapi": ""
