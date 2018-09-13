@@ -10,31 +10,24 @@ const app = express();
 app.use(compression());
 // const port = 8001
 const httpsOption = {
-  pfx: fs.readFileSync('./https/xxxxxxxxxxxxx.pfx'),
-  passphrase: 'xxxxxxxxx'
+  pfx: fs.readFileSync('../https/xxxxxxxxxxxxxxx.pfx'),
+  passphrase: 'xxxxxxxxxx'
 }
 const safePort = 8002
 // 跨域
 const proxy = require('http-proxy-middleware')
 const proxyTable = {
-    "/jisuapi": {
-      "target": "https://api.jisuapi.com",
-      "changeOrigin": true,
-      "pathRewrite": {
-        "^/jisuapi": ""
-      }
+  "/juheapi": {
+    "target": "http://api.juheapi.com",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/juheapi": ""
     }
+  }
 }
 Object.keys(proxyTable).forEach(function(key){
     app.use(proxy(key,proxyTable[key]))
 })
-
-// app.use('/jisuapi', proxy(
-//   {
-//     target: 'https://api.jisuapi.com',
-//     changeOrigin: true
-//   })
-// );
 
 app.use(express.static(path.join(__dirname, 'build')));
 

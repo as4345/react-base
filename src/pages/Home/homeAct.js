@@ -7,22 +7,12 @@ class HomeAct {
 		inHomeTime: 0,
 		dataArr: []
 	})
-
-	getTodayHistory = async () => {
+	testAjax = async () => {
 		const data = await Util.Ajax({
-			// url: "/showapi/341-3",
-			url: api.toh,
+			url: api.test,
 			type: "get",
-			// type: "post",
-			// data: {
-			// 	// "showapi_timestamp": formatterDateTime(),
-			// 	"showapi_appid": '71024', //这里需要改成自己的appid
-			// 	"showapi_sign": '8456c8b607af442f9feabd9f629303af',  //这里需要改成自己的应用的密钥secret
-			// 	"page":"1",
-			// 	"maxResult":"20"
-			// },
 			data: {
-				appkey: "ccdfaf2fe3d95108",
+				key: "0add0496c3d22dc25aa14fefa2297b2b",
 				month: new Date().getMonth() + 1,
 				day: new Date().getDate()
 			}

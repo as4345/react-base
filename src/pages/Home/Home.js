@@ -16,7 +16,7 @@ class Home extends Component {
 		ihtTime = setInterval(() => {
 			data.inHomeTime = data.inHomeTime + 1
 		},1000)
-		act.getTodayHistory()
+		act.testAjax()
 	}
 	componentWillUnmount() {
 		clearInterval(ihtTime)
