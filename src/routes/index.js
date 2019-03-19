@@ -1,15 +1,17 @@
 import React from "react"
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"
-import asyncComponent from "../../public/asyncComponent"
+import asyncComponent from "../components/asyncComponent/asyncComponent"
+import Wrap from '../components/Wrap/Wrap'
 
 
-const Home = asyncComponent(() => import("../Home/Home"))
-const Second = asyncComponent(() => import("../Second/Second"))
-const Third = asyncComponent(() => import("../Third/Third"))
+const Home = asyncComponent(() => import("../pages/Home/Home"))
+const Second = asyncComponent(() => import("../pages/Second/Second"))
+const Third = asyncComponent(() => import("../pages/Third/Third"))
+const Test = asyncComponent(() => import("../pages/Test/Test"))
 
 const Content = () => (
 	<Router>
-    <div>
+    <Wrap>
       <ul>
         <li>
           <Link to="/">Home</Link>
@@ -27,7 +29,8 @@ const Content = () => (
       <Route exact path="/" component={Home} />
       <Route path="/second" component={Second} />
       <Route path="/third" component={Third} />
-    </div>
+      <Route path="/test" component={Test} />
+    </Wrap>
 	</Router>
 )
 

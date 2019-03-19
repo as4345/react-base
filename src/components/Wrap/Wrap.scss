@@ -1,0 +1,9 @@
+.Wrap {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    .d1 {
+        flex: 1;
+        padding-bottom: 100px
+    }
+}

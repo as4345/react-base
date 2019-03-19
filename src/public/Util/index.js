@@ -1,3 +1,0 @@
-
-
-export Ajax from "./Ajax"

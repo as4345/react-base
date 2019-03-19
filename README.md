@@ -1,7 +1,16 @@
+开发流程
+只需关注src目录内即可
+所有公共方法写到src/utils内并暴漏到src/utils/index.js上
+所有页面需暴漏在src/routes/index上，src/pages或者src/components内不再有Router页面，避免难以翻找页面
+所有区分业务环境的公共配置写在src/config上，如接口host等
+所有静态图片资源放在src/assets内，webpack已配置@符号为src/目录，可直接@/assets/xxx.png方式引入
+如果需要引入antd，则在src/index.js上引入antd的css文件，然后在src/utils/index.js引入antdFile，这么做是为了以最低体积的方式引入
 
 
 
-简单中文版说明
+
+
+架子简单中文版说明
 
 此项目是 react + react-router4 + mobx + axios的一个项目，是在create-react-app的基础上增加了额外一些基础工具支持，可以作为
 新项目的一个基础架子，相较react + redux，这个框架基础更加简洁，开发效率更高，不要关心一堆复杂的状态更新流程
@@ -15,10 +24,30 @@ npm start
 
 
 运行生成环境
-1.打包
+1.打包生产/开发测试环境（主要是接口host不同，部分包打包出来体积不同）
 npm run build
-2.跑服务器
-npm run serve (未安装serve需先yarn global add serve全局安装)
+npm run buildDev
+2.跑服务器（根据不同情况有多个方法）
+
+node服务器
+node server.js  // 没有后端支持时解决跨域接口问题
+
+nginx服务器 // 使用try_files重定位所有访问到index.html
+server {
+ ...
+ location / {
+  try_files $uri /index.html
+ }
+}
+
+apache服务器  // 同上原理
+RewriteBase /
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
+
+
 
 
 开发环境接口代理使用教程（服务端需要后台配合设置cors，这里不做介绍），此项目home页既采用了下面教程的代理方案
